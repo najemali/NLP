@@ -95,13 +95,12 @@ class Classifier:
             output = model(inputs.to(device),mask.to(device))
             #loss_test = loss_fcn(output, labels.to(device))
             predict = torch.argmax(output,axis=1)
-            predictions.append(predict.cpu().numpy())
+            predictions.extend(predict.cpu().tolist())
 
-        return predictions
-
-
-classifier = Classifier()
-classifier.train("../data/traindata.csv","../data/devdata.csv",torch.device("cpu"))
-print(classifier.predict("../data/devdata.csv",torch.device("cpu")))
-
-
+        def convert_labels(predictions: List[int]) -> List[str]:
+          label_names = ['negative', 'neutral', 'positive']
+          return [label_names[pred] for pred in predictions]
+        
+        converted_predictions = convert_labels(predictions)
+      
+        return converted_predictions
