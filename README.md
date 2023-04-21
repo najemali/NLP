@@ -45,7 +45,7 @@ d. pandas <br>
 e. scikit-learn <br>
 
 ## Results of the model
-From our code, we have been able to get a mean accuracy on the test set of XX% in XX time.
+From our code, we have been able to get a mean accuracy on the dev set of 87.02% in 2505.33s or 41.76 minutes.
 
 ## Further Improvements
 
